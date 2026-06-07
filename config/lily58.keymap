@@ -13,10 +13,34 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
+        Left_bracket {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <16 17>;
+        };
+
+        Right_bracket {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <18 19>;
+        };
+
+        Left_parent {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <28 29>;
+        };
+
+        Right_parent {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <30 31>;
+        };
+
+        Left_brace {
+            bindings = <&kp LEFT_BRACE>;
+            key-positions = <40 41>;
+        };
+
+        Right_brace {
+            bindings = <&kp RIGHT_BRACE>;
+            key-positions = <44 45>;
         };
     };
 
@@ -52,7 +76,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        Base {
             // ------------------------------------------------------------------------------------------------------------
             // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
             // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
@@ -61,17 +85,15 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp ESC    &kp N1  &kp N2  &kp N3    &kp N4    &kp N5                              &kp N6        &kp N7    &kp N8     &kp N9   &kp N0    &kp EQUAL
-&kp TAB    &kp Q   &kp W   &kp E     &kp R     &kp T                               &kp Y         &kp U     &kp I      &kp O    &kp P     &kp MINUS
-&kp LCTRL  &kp A   &kp S   &kp D     &kp F     &kp G                               &kp H         &kp J     &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X   &kp C     &kp V     &kp B        &kp LBKT     &kp RBKT  &kp N         &kp M     &kp COMMA  &kp DOT  &kp FSLH  &kp BACKSLASH
-                           &kp LALT  &kp LGUI  &lt 1 GRAVE  &kp SPACE    &kp RET   &lt 2 DELETE  &kp BSPC  &kp RGUI
+&kp ESC           &hrm F1 N1  &hrm F2 N2  &hrm F3 N3  &hrm F4 N4       &hrm F5 N5                  &hrm F6 N6  &hrm F7 N7   &hrm F8 N8  &hrm F9 N9  &hrm F10 N0  &kp BACKSPACE
+&kp TAB           &kp Q       &kp W       &kp E       &kp R            &kp T                       &kp Y       &kp U        &kp I       &hrm F11 O  &hrm F12 P   &kp MINUS
+&kp LEFT_SHIFT    &kp A       &kp S       &kp D       &kp F            &kp G                       &kp H       &kp J        &kp K       &kp L       &kp SEMI     &kp SQT
+&kp LEFT_CONTROL  &kp Z       &kp X       &kp C       &kp V            &kp B       &none    &none  &kp N       &kp M        &kp COMMA   &kp DOT     &kp FSLH     &kp RIGHT_SHIFT
+                                          &kp LALT    &lt 1 BACKSLASH  &kp SPACE   &none    &none  &kp SPACE   &lt 2 ENTER  &kp RGUI
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        lower_layer {
+        Lower {
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
             // |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
@@ -86,11 +108,9 @@
 &trans      &ext_power EP_ON  &ext_power EP_OFF  &ext_power EP_TOG  &trans        &trans        &trans    &trans  &trans     &kp MINUS  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE
                                                  &trans             &trans        &trans        &trans    &trans  &trans     &trans     &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        raise_layer {
+        Raise {
             // ------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
